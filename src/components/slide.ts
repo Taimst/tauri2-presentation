@@ -23,7 +23,7 @@ const slidesData: SlideData[] = [
 ];
 
 const slideContainer = document.getElementById(
-  "slide-container"
+  "slide-container",
 ) as HTMLElement;
 let currentSlide = 0;
 

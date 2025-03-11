@@ -4,7 +4,7 @@ export function alertBlock(
   type: AlertType,
   text: string,
   img?: string,
-  isSoft: boolean = false
+  isSoft: boolean = false,
 ): string {
   const elem = document.createElement("div");
   elem.role = "alert";
@@ -49,7 +49,7 @@ export function alertBlock(
   const parser = new DOMParser();
   const svgDoc = parser.parseFromString(
     svgIcon,
-    "image/svg+xml"
+    "image/svg+xml",
   ).documentElement;
   svgDoc.classList.add("alert-icon"); // Add class for styling
   elem.appendChild(svgDoc);

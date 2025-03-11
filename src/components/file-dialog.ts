@@ -12,7 +12,7 @@ export function init() {
         {
           title: "Dangerous!",
           kind: "warning",
-        }
+        },
       );
       const filePathEl = document.getElementById("filePath");
       if (filePathEl) {
@@ -22,7 +22,7 @@ export function init() {
               "info",
               "Bet you don't have what it takes ;-)",
               undefined,
-              true
+              true,
             );
       }
     });
