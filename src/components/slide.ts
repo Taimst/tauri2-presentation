@@ -1,11 +1,13 @@
+const componentModules = import.meta.glob("/src/components/*.ts");
+
+const baseDirComponents = "/src/components/";
+const baseDirSlides = "/src/slides/";
+
 interface SlideData {
   id: string;
   url: string;
   scripts?: string[]; // Array of script URLs for this slide
 }
-
-const baseDirComponents = "/src/components/";
-const baseDirSlides = "/src/slides/";
 
 const slidesData: SlideData[] = [
   { id: "slide-1", url: `${baseDirSlides}slide-1.html` },
@@ -48,13 +50,16 @@ async function loadSlide(index: number) {
       // If the slide has associated scripts, load each one
       if (slideData.scripts && Array.isArray(slideData.scripts)) {
         for (const scriptUrl of slideData.scripts) {
-          try {
-            const module = await import(/* @vite-ignore */ scriptUrl);
-            if (module.init) {
-              module.init();
+          const importer = componentModules[scriptUrl];
+          if (importer) {
+            try {
+              const module = await importer();
+              if (module.init) {
+                module.init();
+              }
+            } catch (error) {
+              alert(`Error loading script ${scriptUrl}: ${error}`);
             }
-          } catch (error) {
-            alert(`Error loading script ${scriptUrl}: ${error}`);
           }
         }
       }
