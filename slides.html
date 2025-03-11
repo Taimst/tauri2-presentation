@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri Presentation</title>
+    <script type="module" src="/src/main.ts" defer></script>
+    <script type="module" src="/src/components/slide.ts" defer></script>
+  </head>
+  <body class="bg-base-200 text-base-content">
+    <nav class="navbar bg-base-100 shadow-sm">
+      <div class="navbar-start">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
+            </svg>
+          </div>
+          <ul
+            id="main-nav-small"
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+          >
+            <li><a href="#slide-1">Welcome</a></li>
+            <li><a href="#slide-2">Benefits</a></li>
+            <li><a href="#slide-3">File Dialog Demo</a></li>
+            <li><a href="#slide-4">Save Image Demo</a></li>
+          </ul>
+        </div>
+        <a class="btn btn-ghost text-xl" href="/index.html"
+          >Tauri for Beginners</a
+        >
+      </div>
+      <div class="navbar-center hidden lg:flex">
+        <ul id="main-nav-normal" class="menu menu-horizontal px-1">
+          <li><a href="#slide-1">Welcome</a></li>
+          <li><a href="#slide-2">Benefits</a></li>
+          <li><a href="#slide-3">File Dialog Demo</a></li>
+          <li><a href="#slide-4">Save Image Demo</a></li>
+        </ul>
+      </div>
+      <div class="navbar-end"></div>
+    </nav>
+
+    <div class="container mx-auto py-10">
+      <!-- Navigation buttons -->
+      <div class="flex justify-between mb-10">
+        <button id="prev" class="btn btn-primary btn-outline">Previous</button>
+        <button id="next" class="btn btn-primary">Next</button>
+      </div>
+
+      <!-- Empty slide container (slides will be dynamically loaded here) -->
+      <div id="slide-container" class="space-y-10"></div>
+    </div>
+  </body>
+</html>
