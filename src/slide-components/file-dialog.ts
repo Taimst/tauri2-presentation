@@ -1,5 +1,5 @@
 import { ask, open } from "@tauri-apps/plugin-dialog";
-import { alertBlock } from "./alert";
+import { alertBlock } from "../components/alert";
 
 export function init() {
   // Setup event listener for the dangerous action button

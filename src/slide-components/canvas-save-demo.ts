@@ -1,5 +1,5 @@
 import { writeFile } from "@tauri-apps/plugin-fs";
-import { alertBlock } from "./alert";
+import { alertBlock } from "../components/alert";
 import { save } from "@tauri-apps/plugin-dialog";
 
 export function init() {
