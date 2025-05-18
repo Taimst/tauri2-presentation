@@ -1,18 +1,16 @@
 <!-- Slide 4: Save Image Demo -->
 <h2 class="card-title text-3xl">Save Image Demo</h2>
-<p>
+<p class="mt-3 text-center">
   Drawn on the canvas below is a simple graphic. Click the button to save the
   image as a PNG (or JPEG if you change the format).
-  <b
-    >Note: Could be used asan example for missing perissions
-    (src-tauri/capabilities/default.json)</b
-  >
 </p>
 <canvas
   id="demoCanvas"
   width="300"
   height="200"
-  class="border border-gray-300"
+  class="mt-3 flex place-self-center border border-gray-300"
 ></canvas>
-<button id="saveImageButton" class="btn mt-4 btn-primary">Save Image</button>
-<p id="message" class="mt-2 text-sm"></p>
+<div class="text-center">
+  <button id="saveImageButton" class="btn my-4 btn-primary">Save Image</button>
+</div>
+<p id="message" class="w-fit place-self-center text-sm"></p>

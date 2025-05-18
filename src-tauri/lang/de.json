@@ -1,0 +1,9 @@
+{
+  "test": "Hallo Welt!",
+  "menu": {
+    "info_msg_quit_success": "Wenn das ein echter Button wäre, wäre sie nun vorbei."
+  },
+  "i18n": {
+    "locale_not_valid": "Lokale \"%locale%\" ist nicht erlaubt/nutzbar."
+  }
+}

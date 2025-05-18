@@ -1,0 +1,9 @@
+{
+  "test": "Hello world!",
+  "menu": {
+    "info_msg_quit_success": "If this was a real action, the presentation would have ended."
+  },
+  "i18n": {
+    "locale_not_valid": "Locale \"%locale%\" is not valid/available."
+  }
+}

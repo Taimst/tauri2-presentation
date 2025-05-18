@@ -2,116 +2,177 @@ interface ComponentModule {
   init: () => void;
 }
 
-
 const componentModules = import.meta.glob("./slide-components/*.ts");
-console.log(componentModules);
-const baseDirComponents = "./slide-components/";
-const baseDirSlides = "./src/slides/";
+const baseDirComponents = "./slide-components";
+const baseDirSlides = "./src/slides";
 
 interface SlideData {
   id: string;
   url: string;
-  scripts?: string[]; // Array of script URLs for this slide
+  scripts?: string[];
 }
 
 const slidesData: SlideData[] = [
-  { id: "slide-1", url: `${baseDirSlides}slide-1.html` },
-  { id: "slide-2", url: `${baseDirSlides}slide-2.html` },
+  { id: "introduction", url: `${baseDirSlides}/introduction.html` },
+  { id: "benefits", url: `${baseDirSlides}/benefits.html` },
   {
-    id: "slide-3",
-    url: `${baseDirSlides}slide-3.html`,
-    scripts: [`${baseDirComponents}file-dialog.ts`],
+    id: "menu",
+    url: `${baseDirSlides}/menu.html`,
+    scripts: [`${baseDirComponents}/menu.ts`],
   },
   {
-    id: "slide-4",
-    url: `${baseDirSlides}slide-4.html`,
-    scripts: [`${baseDirComponents}canvas-save-demo.ts`],
+    id: "file-dialog",
+    url: `${baseDirSlides}/file-dialog.html`,
+    scripts: [`${baseDirComponents}/file-dialog.ts`],
   },
+  {
+    id: "image-save",
+    url: `${baseDirSlides}/image-save.html`,
+    scripts: [`${baseDirComponents}/canvas-save-demo.ts`],
+  },
+  {
+    id: "i18n",
+    url: `${baseDirSlides}/i18n.html`,
+    scripts: [`${baseDirComponents}/i18n.ts`],
+  },
+  { id: "plugins", url: `${baseDirSlides}/plugins.html` },
 ];
 
 const slideContainer = document.getElementById(
   "slide-container",
 ) as HTMLElement;
-let currentSlide = 0;
 
-// Function to dynamically load and display a slide
+// Read and parse the `slide` query param:
+const params = new URLSearchParams(window.location.search);
+let currentSlide = 0;
+const paramSlide = params.get("slide");
+if (paramSlide) {
+  // try as index
+  const idx = parseInt(paramSlide, 10);
+  if (!isNaN(idx) && idx >= 0 && idx < slidesData.length) {
+    currentSlide = idx;
+  } else {
+    // fallback: try matching by slide id
+    const byId = slidesData.findIndex((s) => s.id === paramSlide);
+    if (byId !== -1) currentSlide = byId;
+  }
+}
+
+// Update the URL without reloading:
+function updateUrl(index: number) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("slide", index.toString());
+  window.history.replaceState({}, "", url);
+}
+
+// Load and display a slide by index:
 async function loadSlide(index: number) {
   const slideData = slidesData[index];
   if (!slideData) return;
 
-  // Check if the slide is already in the DOM.
-  let slideElement = document.getElementById(slideData.id);
-  if (!slideElement) {
-    slideElement = document.createElement("section");
-    slideElement.id = slideData.id;
-    slideElement.className = "card bg-base-100 shadow-xl p-10";
-    slideContainer.appendChild(slideElement);
+  let slideEl = document.getElementById(slideData.id);
+  if (!slideEl) {
+    slideEl = document.createElement("section");
+    slideEl.id = slideData.id;
+    slideEl.className = "card bg-base-100 shadow-xl p-10";
+    slideContainer.appendChild(slideEl);
 
     try {
-      // Fetch external HTML and insert into the slide element
-      const response = await fetch(slideData.url);
-      slideElement.innerHTML = await response.text();
+      const resp = await fetch(slideData.url);
+      slideEl.innerHTML = await resp.text();
 
-      // If the slide has associated scripts, load each one
-      if (slideData.scripts && Array.isArray(slideData.scripts)) {
+      if (slideData.scripts) {
         for (const scriptUrl of slideData.scripts) {
-          console.log(scriptUrl);
           const importer = componentModules[scriptUrl];
-          console.log(scriptUrl)
           if (importer) {
-            try {
-              const module = await importer() as ComponentModule;
-              if (module.init) {
-                module.init();
-              }
-            } catch (error) {
-              alert(`Error loading script ${scriptUrl}: ${error}`);
-            }
+            const mod = (await importer()) as ComponentModule;
+            mod.init?.();
           }
         }
       }
-    } catch (error) {
-      slideElement.innerHTML = `<p class="text-red-500">Error loading slide content.</p>`;
+    } catch {
+      slideEl.innerHTML =
+        '<p class="text-red-500">Error loading slide content.</p>';
     }
   }
 
-  // Hide all slides and show only the active one
-  document.querySelectorAll("section").forEach((slide) => {
-    slide.style.display = slide.id === slideData.id ? "block" : "none";
+  // Show only this slide:
+  document.querySelectorAll("section").forEach((sec) => {
+    (sec as HTMLElement).style.display =
+      sec.id === slideData.id ? "block" : "none";
+  });
+
+  updateUrl(index);
+}
+
+// Generate a nav menu that uses `?slide=<index>` links:
+function generateNavigation(navId: string) {
+  const navEl = document.getElementById(navId);
+  if (!navEl) return;
+  navEl.innerHTML = "";
+
+  slidesData.forEach((slide, idx) => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+
+    a.href = `?slide=${idx}`; // fallback link
+    a.dataset.index = idx.toString(); // for SPA clicks
+    a.textContent = slide.id
+      .split(/[-_]/)
+      .map((w) => w[0].toUpperCase() + w.slice(1))
+      .join(" ");
+
+    if (idx === currentSlide) {
+      a.classList.add("link-primary");
+    }
+
+    li.appendChild(a);
+    navEl.appendChild(li);
   });
 }
 
-// Navigation event listeners
+// Hook nav clicks to load slides without full reload:
+function setupNavEvents(navId: string) {
+  document.getElementById(navId)?.addEventListener("click", (e) => {
+    const tgt = e.target as HTMLElement;
+    if (tgt.tagName === "A") {
+      e.preventDefault();
+      const idx = tgt.dataset.index;
+      if (idx != null) {
+        const i = parseInt(idx, 10);
+        if (!isNaN(i)) {
+          currentSlide = i;
+          loadSlide(i);
+
+          // Update active class:
+          document
+            .querySelectorAll(`#${navId} a`)
+            .forEach((el) => el.classList.remove("link-primary"));
+          (
+            document.querySelector(
+              `#${navId} a[data-index="${i}"]`,
+            ) as HTMLElement
+          )?.classList.add("link-primary");
+        }
+      }
+      tgt.blur();
+    }
+  });
+}
+
+// Prev / Next buttons:
 document.getElementById("prev")?.addEventListener("click", () => {
   currentSlide = Math.max(0, currentSlide - 1);
   loadSlide(currentSlide);
 });
-
 document.getElementById("next")?.addEventListener("click", () => {
   currentSlide = Math.min(slidesData.length - 1, currentSlide + 1);
   loadSlide(currentSlide);
 });
 
-// Handle navigation menu clicks
-function setupNavEvents(navId: string) {
-  document.getElementById(navId)?.addEventListener("click", (event) => {
-    const target = event.target as HTMLElement;
-    if (target.tagName === "A") {
-      event.preventDefault();
-      const targetId = target.getAttribute("href")?.replace("#", "");
-      const index = slidesData.findIndex((slide) => slide.id === targetId);
-      if (index !== -1) {
-        currentSlide = index;
-        loadSlide(currentSlide);
-      }
-      target.blur();
-    }
-  });
-}
-
-// Setup event listeners for both menus
+// Initialize everything:
+generateNavigation("main-nav-normal");
+generateNavigation("main-nav-small");
 setupNavEvents("main-nav-normal");
 setupNavEvents("main-nav-small");
-
-// Load the first slide initially
 loadSlide(currentSlide);
