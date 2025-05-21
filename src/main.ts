@@ -72,11 +72,6 @@ async function loadSlide(index: number) {
 
   let slideEl = document.getElementById(slideData.id);
   if (!slideEl) {
-    // Show only this slide:
-    document.querySelectorAll("section").forEach((sec) => {
-      (sec as HTMLElement).style.display =
-        sec.id === slideData.id ? "block" : "none";
-    });
     slideEl = document.createElement("section");
     slideEl.id = slideData.id;
     slideEl.className = "card bg-base-100 shadow-xl p-10";
@@ -100,6 +95,12 @@ async function loadSlide(index: number) {
         '<p class="text-red-500">Error loading slide content.</p>';
     }
   }
+
+  // Show only this slide:
+  document.querySelectorAll("section").forEach((sec) => {
+    (sec as HTMLElement).style.display =
+      sec.id === slideData.id ? "block" : "none";
+  });
 
   updateUrl(index);
 }
