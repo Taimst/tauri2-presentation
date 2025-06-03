@@ -1,18 +1,49 @@
-<h2 class="card-title text-3xl">Menüs</h2>
-<div class="mt-3 text-center">
-  <button type="button" class="btn btn-primary" data-menu-button data-action="show">
-    Show Menu
-  </button>
-  <button type="button" class="btn btn-warning" data-menu-button data-action="change">
-    Change Menu
-  </button>
-  <button type="button" class="btn btn-secondary" data-menu-button data-action="hide">
-    Hide Menu
-  </button>
-</div>
-<div class="mt-3 text-center">
-  <div id="btn-action"></div>
-</div>
-<div class="mt-3 text-center">
-  <textarea class="textarea" name="tesxting" id="texting" placeholder="Some text"></textarea>
+<!-- Slide: Menüs -->
+<h2 class="card-title text-center text-3xl">Menüs</h2>
+<div class="card mt-6 bg-base-100 p-6 text-base-content">
+  <p class="mb-4 text-center">
+    Verwende die folgenden Buttons, um das Menü anzuzeigen, zu ändern oder zu
+    verbergen:
+  </p>
+  <div class="mb-6 flex justify-center space-x-4">
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-menu-button
+      data-action="show"
+    >
+      Menü anzeigen
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      data-menu-button
+      data-action="change"
+    >
+      Menü ändern
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-menu-button
+      data-action="hide"
+    >
+      Menü verbergen
+    </button>
+  </div>
+  <div class="mb-6 text-center">
+    <span id="btn-action" class="text-lg font-semibold"></span>
+  </div>
+  <div class="mb-6 flex justify-center space-x-4">
+    <button type="button" class="btn btn-outline btn-info" id="set-fullscreen">
+      Toggle Fullscreen
+    </button>
+  </div>
+  <div class="text-center">
+    <textarea
+      class="textarea-bordered textarea mx-auto w-full md:w-2/3"
+      id="texting"
+      placeholder="Gib hier Text ein"
+    ></textarea>
+  </div>
 </div>

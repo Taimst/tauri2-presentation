@@ -8,22 +8,17 @@ export function init() {
     dangerousActionBtn.dataset.listener = "true";
     dangerousActionBtn.addEventListener("click", async () => {
       const answer = await ask(
-        "This action cannot be reverted. Are you sure?",
+        "Diese Aktion kann nicht rückgängig gemacht werden. Bist Du Dir sicher?",
         {
-          title: "Dangerous!",
+          title: "Gefährlich!",
           kind: "warning",
         },
       );
       const filePathEl = document.getElementById("filePath");
       if (filePathEl) {
         filePathEl.innerHTML = answer
-          ? alertBlock("error", "Error 1337! WHAT HAVE YOU DONE!")
-          : alertBlock(
-              "info",
-              "Bet you don't have what it takes ;-)",
-              undefined,
-              true,
-            );
+          ? alertBlock("error", "WAS HAST DU GETAN!!")
+          : alertBlock("info", "Nochmal gut gegangen...", undefined, true);
       }
     });
   }
@@ -37,8 +32,8 @@ export function init() {
       const filePathEl = document.getElementById("filePath");
       if (filePathEl) {
         filePathEl.innerHTML = file
-          ? alertBlock("success", `Selected file: ${file}`)
-          : alertBlock("info", "No file selected.");
+          ? alertBlock("success", `Ausgewählte Datei: ${file}`)
+          : alertBlock("info", "Keine Datei ausgewählt.");
       }
     });
   }

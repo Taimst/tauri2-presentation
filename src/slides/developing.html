@@ -1,0 +1,68 @@
+<!-- Slide: Debugging & Entwicklung -->
+<h2 class="card-title text-center text-3xl">Debugging &amp; Entwicklung</h2>
+<div class="card mt-6 bg-base-100 p-6 text-base-content">
+  <p class="mb-4">
+    Nutze ViteJS in Kombination mit der Webview-Developer-Console, um deine
+    Tauri-App schnell zu entwickeln und zu debuggen.
+  </p>
+  <ul class="mb-6 list-disc space-y-2 pl-5">
+    <li>
+      <span class="font-semibold">Entwicklungsserver starten:</span>
+      Führe
+      <code
+        class="rounded bg-gray-200 px-1 py-0.5 text-slate-900 dark:bg-slate-700 dark:text-gray-100"
+        >bun run tauri dev</code
+      >
+      im Projektverzeichnis aus. Dadurch:
+      <ul class="mt-2 list-inside list-disc space-y-1 pl-5">
+        <li>ViteJS lädt dein Frontend mit Hot-Module-Replacement (HMR).</li>
+        <li>
+          Tauri startet das Webview-Fenster und verbindet sich mit dem
+          Vite-Server.
+        </li>
+      </ul>
+    </li>
+    <li>
+      <span class="font-semibold"
+        >Live-Reload &amp; Hot-Module-Replacement:</span
+      >
+      Jede Änderung an deinen HTML-, CSS- oder JS-/TS-Dateien wird sofort im
+      Webview aktualisiert, ohne die App neu zu starten.
+    </li>
+    <li>
+      <span class="font-semibold">Webview Developer Console öffnen:</span>
+      <ul class="mt-2 list-inside list-disc space-y-1 pl-5">
+        <li>
+          Drücke <span class="font-bold">Strg+Shift+I</span> (Windows/Linux)
+          oder <span class="font-bold">⌘+Alt+I</span> (macOS), um die DevTools
+          im Webview zu öffnen.
+        </li>
+        <li>
+          Rechtsklick im Fenster und „Untersuchen“ wählen, falls aktiviert.
+        </li>
+      </ul>
+      Über die Console siehst du Log-Ausgaben, Fehlermeldungen und kannst
+      dynamisch HTML-/CSS-Anpassungen vornehmen.
+    </li>
+    <li>
+      <span class="font-semibold">Breakpoints &amp; Netzwerk-Inspektion:</span>
+      Setze Breakpoints in deinem JavaScript/TypeScript, verfolge
+      Netzwerk-Anfragen und inspiziere den lokalen Speicher oder Cookies direkt
+      in der Webview-DevTools.
+    </li>
+    <li>
+      <span class="font-semibold">Rust-Backend debuggen:</span>
+      Nutze
+      <code
+        class="rounded bg-gray-200 px-1 py-0.5 text-slate-900 dark:bg-slate-700 dark:text-gray-100"
+        >cargo tauri dev</code
+      >
+      in Kombination mit deinem bevorzugten Rust-Debugger (z. B. im VS
+      Code-Debugger). Änderungen im Rust-Code erfordern einen Neustart des
+      Tauri-Backend, während das Frontend weiter hot-reloaded wird.
+    </li>
+  </ul>
+  <div class="text-center">
+    <button id="openDevTools" class="btn btn-primary">DevTools öffnen</button>
+  </div>
+</div>

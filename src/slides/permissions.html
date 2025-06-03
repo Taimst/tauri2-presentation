@@ -1,3 +1,35 @@
-TODO
-<p>file dialog würde sich anbieten</p>
-<p>src-tauri/capabilities/default.json</p>
+<!-- Slide: Berechtigungssystem -->
+<h2 class="card-title text-3xl">Berechtigungssystem</h2>
+<div class="mt-6 flex items-center justify-center">
+  <div class="card w-full bg-warning text-warning-content shadow-xl md:w-2/3">
+    <div class="card-body">
+      <ul class="list-disc space-y-2 pl-5">
+        <li>
+          <span class="font-semibold">Granulare Berechtigungen:</span>
+          Entwickler definieren explizit, welche APIs (Datei, Fenster, usw.)
+          freigegeben werden.
+        </li>
+        <li>
+          <span class="font-semibold">User-Prompt bei sensiblen APIs:</span>
+          Nutzer muss zustimmen, bevor App z. B. Dateisystemzugriff erhält.
+        </li>
+        <li>
+          <span class="font-semibold">Standardmäßig deaktivierte APIs:</span>
+          Minimale Privilegien beim Start.
+        </li>
+        <li>
+          <span class="font-semibold">Laufzeit-Checks:</span>
+          Jede Anfrage ans Backend prüft aktiv, ob die entsprechende
+          Berechtigung erteilt wurde.
+        </li>
+        <li>
+          <span class="font-semibold"
+            >Konfigurationsdatei (<code>tauri.conf.json</code>):</span
+          >
+          Berechtigungen zentral konfiguriert und für verschiedene Umgebungen
+          anpassbar.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

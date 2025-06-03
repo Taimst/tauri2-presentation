@@ -12,7 +12,7 @@ export function init() {
       const imageData = dataURLtoUint8Array(dataUrl);
 
       const selectedPath = await save({
-        title: "Save your image",
+        title: "Speicher Dein Bild",
         filters: [{ name: "Image", extensions: ["png", "jpeg", "jpg"] }],
       });
 
@@ -21,10 +21,16 @@ export function init() {
         try {
           await writeFile(selectedPath, imageData);
           if (msg)
-            msg.innerHTML = alertBlock("success", "Image saved successfully!");
+            msg.innerHTML = alertBlock(
+              "success",
+              "Bild erfolgreich gespeichert!",
+            );
         } catch (error) {
           if (msg)
-            msg.innerHTML = alertBlock("error", "Error saving file: " + error);
+            msg.innerHTML = alertBlock(
+              "error",
+              "Fehler beim Speichern: " + error,
+            );
         }
       }
     });
@@ -40,7 +46,7 @@ if (canvas) {
     ctx.fillRect(20, 20, 260, 160);
     ctx.font = "24px sans-serif";
     ctx.fillStyle = "#ffffff";
-    ctx.fillText("Here could be your file", 25, 100);
+    ctx.fillText("Ein fantastisches Bild", 37, 100);
   }
 }
 

@@ -1,5 +1,40 @@
-<!-- Slide 1: Introduction -->
-<h1 class="card-title text-4xl">Willkommen zu Tauri!</h1>
-<p>
-  Entdecke, wie Tauri eine sichere, effiziente Alternative zu Electron bietet.
-</p>
+<!-- Slide 1: Einführung -->
+<div class="card p-8 text-secondary-content">
+  <div class="flex flex-col items-center md:flex-row">
+    <!-- Textbereich -->
+    <div class="flex-1">
+      <h1 class="mb-4 card-title text-5xl">Willkommen zu Tauri!</h1>
+      <p class="mb-6 text-lg">
+        Entdecke, wie Tauri eine sichere, effiziente Alternative zu Electron
+        bietet.
+      </p>
+      <ul class="list-disc space-y-2 pl-5 text-base">
+        <li>
+          <span class="font-semibold">Rust-basiert:</span>
+          Maximale Sicherheit durch kompilierte System-APIs
+        </li>
+        <li>
+          <span class="font-semibold">Kleine Bundle-Größe:</span>
+          Nur <span class="font-bold">3 - 5 MB</span> statt >100 MB
+        </li>
+        <li>
+          <span class="font-semibold">Native Performance:</span>
+          Ohne den Chromium-Overhead von Electron
+        </li>
+        <li>
+          <span class="font-semibold">Cross-Plattform:</span>
+          Windows, macOS &amp; Linux mit ein und demselben Code
+        </li>
+        <li>
+          <span class="font-semibold">Web-Technologien:</span>
+          HTML/CSS/JS bleiben vertraut, während das Backend in Rust läuft
+        </li>
+      </ul>
+    </div>
+
+    <!-- Logo-Bereich -->
+    <div class="mt-6 flex flex-1 justify-center md:mt-0">
+      <img src="src/assets/Logo.svg" alt="Tauri Logo" class="h-48 w-auto" />
+    </div>
+  </div>
+</div>

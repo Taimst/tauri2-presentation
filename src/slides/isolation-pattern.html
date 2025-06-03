@@ -1,0 +1,42 @@
+<!-- Slide: Sicherheit – Isolationsmuster mit Schema -->
+<h2 class="card-title text-3xl">Sicherheit: Isolationsmuster</h2>
+<div class="mt-6 flex items-center justify-center">
+  <div class="card w-full bg-info text-info-content shadow-xl md:w-2/3">
+    <div class="card-body">
+      <ul class="list-disc space-y-2 pl-5">
+        <li>
+          <span class="font-semibold">Trennung von Frontend und Backend:</span>
+          Webview (HTML/CSS/JS) läuft isoliert von nativen System-APIs.
+        </li>
+        <li>
+          <span class="font-semibold">Minimale Angriffsfläche:</span>
+          Keine direkte Dateioperation oder Systemzugriffe aus dem JS-Kontext
+          möglich.
+        </li>
+        <li>
+          <span class="font-semibold">Coresidenter Rust-Runtime:</span>
+          Systemaufrufe und kritische Logik werden in Rust implementiert und
+          kompiliert.
+        </li>
+        <li>
+          <span class="font-semibold">IPC-Kommunikation:</span>
+          Sichere Message-Passing-Schnittstelle zwischen Webview und Backend.
+        </li>
+        <li>
+          <span class="font-semibold">Strikter Preload-Schutz:</span>
+          Keine Node.js-ähnlichen globalen Objekte, nur explizit geöffnete APIs
+          sind verfügbar.
+        </li>
+      </ul>
+
+      <!-- SVG-Diagramm zur Visualisierung der Isolation -->
+      <div class="mt-6 flex justify-center rounded-2xl bg-neutral-50/60 p-4">
+        <img
+          src="src/assets/IPC_Layer.svg"
+          class="h-auto w-full"
+          alt="IPC Layer Grafik"
+        />
+      </div>
+    </div>
+  </div>
+</div>

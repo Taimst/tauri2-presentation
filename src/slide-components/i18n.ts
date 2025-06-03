@@ -45,7 +45,7 @@ document
     button.addEventListener("click", () => {
       const locale = button.dataset.locale;
       if (!locale) {
-        console.warn("No data-locale on button!", button);
+        console.warn("Kein 'data-locale' am Button gefunden!", button);
         return;
       }
       const detail: LocaleSwitchDetail = { locale };

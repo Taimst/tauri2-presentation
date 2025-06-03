@@ -1,42 +1,10 @@
+import { slidesData } from "./components/slides";
+
 interface ComponentModule {
   init: () => void;
 }
 
 const componentModules = import.meta.glob("./slide-components/*.ts");
-const baseDirComponents = "./slide-components";
-const baseDirSlides = "./src/slides";
-
-interface SlideData {
-  id: string;
-  url: string;
-  scripts?: string[];
-}
-
-const slidesData: SlideData[] = [
-  { id: "introduction", url: `${baseDirSlides}/introduction.html` },
-  { id: "benefits", url: `${baseDirSlides}/benefits.html` },
-  {
-    id: "menu",
-    url: `${baseDirSlides}/menu.html`,
-    scripts: [`${baseDirComponents}/menu.ts`],
-  },
-  {
-    id: "file-dialog",
-    url: `${baseDirSlides}/file-dialog.html`,
-    scripts: [`${baseDirComponents}/file-dialog.ts`],
-  },
-  {
-    id: "image-save",
-    url: `${baseDirSlides}/image-save.html`,
-    scripts: [`${baseDirComponents}/canvas-save-demo.ts`],
-  },
-  {
-    id: "i18n",
-    url: `${baseDirSlides}/i18n.html`,
-    scripts: [`${baseDirComponents}/i18n.ts`],
-  },
-  { id: "plugins", url: `${baseDirSlides}/plugins.html` },
-];
 
 const slideContainer = document.getElementById(
   "slide-container",
@@ -47,18 +15,15 @@ const params = new URLSearchParams(window.location.search);
 let currentSlide = 0;
 const paramSlide = params.get("slide");
 if (paramSlide) {
-  // try as index
   const idx = parseInt(paramSlide, 10);
   if (!isNaN(idx) && idx >= 0 && idx < slidesData.length) {
     currentSlide = idx;
   } else {
-    // fallback: try matching by slide id
     const byId = slidesData.findIndex((s) => s.id === paramSlide);
     if (byId !== -1) currentSlide = byId;
   }
 }
 
-// Update the URL without reloading:
 function updateUrl(index: number) {
   const url = new URL(window.location.href);
   url.searchParams.set("slide", index.toString());
@@ -96,13 +61,30 @@ async function loadSlide(index: number) {
     }
   }
 
-  // Show only this slide:
+  // Nur den aktuellen Slide anzeigen, alle anderen verbergen
   document.querySelectorAll("section").forEach((sec) => {
     (sec as HTMLElement).style.display =
       sec.id === slideData.id ? "block" : "none";
   });
 
   updateUrl(index);
+}
+
+function updateActiveNav() {
+  const navIds = ["main-nav-normal", "main-nav-small"];
+
+  navIds.forEach((navId) => {
+    document
+      .querySelectorAll(`#${navId} a`)
+      .forEach((el) => el.classList.remove("link-primary"));
+
+    const activeLink = document.querySelector(
+      `#${navId} a[data-index="${currentSlide}"]`,
+    ) as HTMLElement;
+    if (activeLink) {
+      activeLink.classList.add("link-primary");
+    }
+  });
 }
 
 // Generate a nav menu that uses `?slide=<index>` links:
@@ -115,45 +97,35 @@ function generateNavigation(navId: string) {
     const li = document.createElement("li");
     const a = document.createElement("a");
 
-    a.href = `?slide=${idx}`; // fallback link
-    a.dataset.index = idx.toString(); // for SPA clicks
-    a.textContent = slide.id
-      .split(/[-_]/)
-      .map((w) => w[0].toUpperCase() + w.slice(1))
-      .join(" ");
+    a.href = `?slide=${idx}`; // Fallback-Link
+    a.dataset.index = idx.toString(); // Für SPA-Klicks
 
-    if (idx === currentSlide) {
-      a.classList.add("link-primary");
-    }
+    // ◀︎ hier prüfen wir zuerst, ob slide.title existiert
+    a.textContent = slide.title
+      ? slide.title
+      : slide.id
+          .split(/[-_]/)
+          .map((w) => w[0].toUpperCase() + w.slice(1))
+          .join(" ");
 
     li.appendChild(a);
     navEl.appendChild(li);
   });
+
+  updateActiveNav();
 }
 
 // Hook nav clicks to load slides without full reload:
 function setupNavEvents(navId: string) {
   document.getElementById(navId)?.addEventListener("click", (e) => {
     const tgt = e.target as HTMLElement;
-    if (tgt.tagName === "A") {
+    if (tgt.tagName === "A" && tgt.dataset.index != null) {
       e.preventDefault();
-      const idx = tgt.dataset.index;
-      if (idx != null) {
-        const i = parseInt(idx, 10);
-        if (!isNaN(i)) {
-          currentSlide = i;
-          loadSlide(i);
-
-          // Update active class:
-          document
-            .querySelectorAll(`#${navId} a`)
-            .forEach((el) => el.classList.remove("link-primary"));
-          (
-            document.querySelector(
-              `#${navId} a[data-index="${i}"]`,
-            ) as HTMLElement
-          )?.classList.add("link-primary");
-        }
+      const i = parseInt(tgt.dataset.index, 10);
+      if (!isNaN(i)) {
+        currentSlide = i;
+        loadSlide(i);
+        updateActiveNav();
       }
       tgt.blur();
     }
@@ -164,10 +136,12 @@ function setupNavEvents(navId: string) {
 document.getElementById("prev")?.addEventListener("click", () => {
   currentSlide = Math.max(0, currentSlide - 1);
   loadSlide(currentSlide);
+  updateActiveNav();
 });
 document.getElementById("next")?.addEventListener("click", () => {
   currentSlide = Math.min(slidesData.length - 1, currentSlide + 1);
   loadSlide(currentSlide);
+  updateActiveNav();
 });
 
 // Initialize everything:

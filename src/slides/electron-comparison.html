@@ -1,0 +1,126 @@
+<!-- Slide: Vorteile von Tauri 2 gegenüber Electron -->
+<h2 class="card-title text-3xl">Vorteile von Tauri gegenüber Electron</h2>
+<div class="mt-6 flex flex-col gap-8 md:flex-row">
+  <!-- Tauri 2 Card -->
+  <div class="card w-full bg-success text-success-content shadow-xl md:w-1/2">
+    <div class="card-body">
+      <h3 class="card-title">Tauri 2</h3>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>
+          <span class="font-semibold">Kleine Bundle-Größe:</span>
+          <span class="ml-auto font-bold">~ 3 - 5 MB</span>
+        </li>
+        <li>
+          <span class="font-semibold">Niedrigere Ressourcen:</span>
+          Weniger RAM- und CPU-Verbrauch
+        </li>
+        <li>
+          <span class="font-semibold">Rust-basiert:</span>
+          Starke Sicherheitsgarantien
+        </li>
+        <li>
+          <span class="font-semibold">Kein Chromium-Overhead:</span>
+          Native Webview (z. B. Wry/WebKit)
+        </li>
+        <li>
+          <span class="font-semibold">Cross-Plattform-Flexibilität:</span>
+          Einfacher Wechsel zwischen Webview-Frameworks
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Electron Card -->
+  <div class="card w-full bg-error text-error-content shadow-xl md:w-1/2">
+    <div class="card-body">
+      <h3 class="card-title">Electron</h3>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>
+          <span class="font-semibold">Große Bundle-Größe:</span>
+          <span class="ml-auto font-bold">&gt; 100 MB</span>
+        </li>
+        <li>
+          <span class="font-semibold">Höherer Ressourcenbedarf:</span>
+          Deutlich mehr RAM- und CPU-Verbrauch
+        </li>
+        <li>
+          <span class="font-semibold">Sicherheitsrisiken:</span>
+          Node-Integration kann Angriffspunkte bieten
+        </li>
+        <li>
+          <span class="font-semibold">Chromium-Overhead:</span>
+          Ganze Browser-Engine statt leichtgewichtiges Webview
+        </li>
+        <li>
+          <span class="font-semibold">Monolithisches Paket:</span>
+          Weniger flexibel beim Austausch von Komponenten
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide: Nachteile von Tauri 2 gegenüber Electron -->
+<h2 class="mt-8 card-title text-3xl">Nachteile von Tauri gegenüber Electron</h2>
+<div class="mt-6 flex flex-col gap-8 md:flex-row">
+  <!-- Tauri 2 Nachteile Card -->
+  <div class="card w-full bg-error text-error-content shadow-xl md:w-1/2">
+    <div class="card-body">
+      <h3 class="card-title">Tauri 2</h3>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>
+          <span class="font-semibold">Begrenztes Ökosystem:</span>
+          Weniger Plugins und Bibliotheken im Vergleich zu Electron
+        </li>
+        <li>
+          <span class="font-semibold">Steilere Lernkurve:</span>
+          Rust-Kenntnisse erforderlich für native Erweiterungen
+        </li>
+        <li>
+          <span class="font-semibold">Weniger Reife:</span>
+          Jüngeres Projekt mit kleinerer Community
+        </li>
+        <li>
+          <span class="font-semibold">Eingeschränkte Debugging-Tools:</span>
+          Weniger ausgereifte Debugging- und Profiling-Unterstützung
+        </li>
+        <li>
+          <span class="font-semibold"
+            >Plattformabhängige Webview-Funktionalität:</span
+          >
+          Manche Features variieren je nach eingesetztem Webview (z. B. Wry vs.
+          WebKit)
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Electron Vorteile Card -->
+  <div class="card w-full bg-success text-success-content shadow-xl md:w-1/2">
+    <div class="card-body">
+      <h3 class="card-title">Electron</h3>
+      <ul class="mt-2 list-disc space-y-2 pl-5">
+        <li>
+          <span class="font-semibold">Ausgereiftes Ökosystem:</span>
+          Enorme Anzahl an Modulen und Plugins
+        </li>
+        <li>
+          <span class="font-semibold">Weitverbreitete Community:</span>
+          Viele Ressourcen, Tutorials und Beispiele verfügbar
+        </li>
+        <li>
+          <span class="font-semibold">Etablierte Tools:</span>
+          Umfangreiche Debugging- und Profiling-Unterstützung in DevTools
+        </li>
+        <li>
+          <span class="font-semibold">Einheitliche Browser-Engine:</span>
+          Chrome-basiertes Webview sorgt für konsistentes Verhalten
+        </li>
+        <li>
+          <span class="font-semibold">Javascript-zentriert:</span>
+          Einfacher Einstieg für Web-Entwickler ohne Rust-Erfahrung
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

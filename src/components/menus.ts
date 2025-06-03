@@ -11,21 +11,21 @@ export const fileSubmenu = await Submenu.new({
   items: [
     await MenuItem.new({
       id: "new",
-      text: "New",
+      text: "Neu",
       action: () => {
         console.log("New clicked");
       },
     }),
     await MenuItem.new({
       id: "open",
-      text: "Open",
+      text: "Öffnen",
       action: () => {
         console.log("Open clicked");
       },
     }),
     await MenuItem.new({
       id: "save_as",
-      text: "Save As...",
+      text: "Speichern als...",
       action: () => {
         console.log("Save As clicked");
       },
@@ -54,14 +54,14 @@ export const editSubmenu = await Submenu.new({
 });
 
 export const predefinedMenu = await Submenu.new({
-  text: "Predefined",
+  text: "OS Eigen",
   items: [
     await PredefinedMenuItem.new({
-      text: "cut-text",
+      text: "Ausschneiden",
       item: "Cut",
     }),
     await PredefinedMenuItem.new({
-      text: "paste-text",
+      text: "Einfügen",
       item: "Paste",
     }),
   ],
