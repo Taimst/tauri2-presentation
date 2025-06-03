@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri App</title>
+  </head>
+
+  <body>
+    <div class="mt-5 flex items-center justify-center">
+      <a class="btn btn-accent" href="/slides.html">Slides</a>
+    </div>
+    <div class="mt-12 mb-12 flex h-full items-center justify-center">
+      <div class="grid h-64 w-64 grid-cols-3 gap-2">
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+        <button
+          class="btn h-20 w-20 text-3xl btn-outline btn-primary"
+          onclick="makeMove(this)"
+        ></button>
+      </div>
+      <script>
+        let currentPlayer = "X";
+        function makeMove(cell) {
+          if (!cell.innerText) {
+            cell.innerText = currentPlayer;
+            currentPlayer = currentPlayer === "X" ? "O" : "X";
+          }
+        }
+      </script>
+    </div>
+    <ul class="list rounded-box bg-base-100 shadow-md">
+      <li class="p-4 pb-2 text-xs tracking-wide opacity-60">
+        Moves of players
+      </li>
+
+      <li class="list-row">
+        <div class="text-4xl font-thin tabular-nums opacity-30">01</div>
+        <div>
+          <img
+            class="size-10 rounded-box"
+            src="https://img.daisyui.com/images/profile/demo/1@94.webp"
+          />
+        </div>
+        <div class="list-col-grow">
+          <div>Player 1</div>
+          <div class="text-xs font-semibold uppercase opacity-60">
+            Remaining Reason
+          </div>
+        </div>
+        <button class="btn btn-square btn-ghost">
+          <svg
+            class="size-[1.2em]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <g
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke-width="2"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path d="M6 3L20 12 6 21 6 3z"></path>
+            </g>
+          </svg>
+        </button>
+      </li>
+
+      <li class="list-row">
+        <div class="text-4xl font-thin tabular-nums opacity-30">02</div>
+        <div>
+          <img
+            class="size-10 rounded-box"
+            src="https://img.daisyui.com/images/profile/demo/4@94.webp"
+          />
+        </div>
+        <div class="list-col-grow">
+          <div>Player 2</div>
+          <div class="text-xs font-semibold uppercase opacity-60">
+            Bears of a fever
+          </div>
+        </div>
+        <button class="btn btn-square btn-ghost">
+          <svg
+            class="size-[1.2em]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <g
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke-width="2"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path d="M6 3L20 12 6 21 6 3z"></path>
+            </g>
+          </svg>
+        </button>
+      </li>
+
+      <li class="list-row">
+        <div class="text-4xl font-thin tabular-nums opacity-30">03</div>
+        <div>
+          <img
+            class="size-10 rounded-box"
+            src="https://img.daisyui.com/images/profile/demo/3@94.webp"
+          />
+        </div>
+        <div class="list-col-grow">
+          <div>Player 1</div>
+          <div class="text-xs font-semibold uppercase opacity-60">
+            Cappuccino
+          </div>
+        </div>
+        <button class="btn btn-square btn-ghost">
+          <svg
+            class="size-[1.2em]"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <g
+              stroke-linejoin="round"
+              stroke-linecap="round"
+              stroke-width="2"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path d="M6 3L20 12 6 21 6 3z"></path>
+            </g>
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </body>
+</html>
