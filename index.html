@@ -39,7 +39,7 @@
         >
       </div>
 
-      <div class="navbar-center hidden lg:flex">
+      <div class="navbar-center hidden lg:flex overflow-hidden pl-24 max-w-3/4">
         <ul id="main-nav-normal" class="menu menu-horizontal px-1"></ul>
       </div>
 
@@ -111,6 +111,17 @@
           }
         });
       })();
+    </script>
+    <script>
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+          const prevBtn = document.getElementById("prev");
+          if (prevBtn) prevBtn.click();
+        } else if (e.key === "ArrowRight") {
+          const nextBtn = document.getElementById("next");
+          if (nextBtn) nextBtn.click();
+        }
+      });
     </script>
   </body>
 </html>
