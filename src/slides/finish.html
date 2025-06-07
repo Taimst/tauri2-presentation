@@ -1,33 +1,71 @@
-<!-- Slide: Abschluss -->
+<!-- Slide: Abschluss & Fragen -->
 <h2 class="card-title text-center text-3xl">Abschluss &amp; Fragen</h2>
-<div class="card mt-6 bg-base-100 p-6 text-base-content">
-  <p class="mb-6 text-center text-2xl">Vielen Dank für eure Aufmerksamkeit!</p>
-  <p class="mb-4 text-center text-lg">Habt ihr noch Fragen?</p>
-  <ul class="mb-6 list-disc space-y-2 pl-5">
-    <li>
-      <span class="font-semibold">Dokumentation:</span>
-      <a href="https://tauri.app/" target="_blank" class="link link-primary"
-        >tauri.app</a
-      >
-    </li>
-    <li>
-      <span class="font-semibold">GitHub:</span>
-      <a
-        href="https://github.com/tauri-apps/tauri"
-        target="_blank"
-        class="link link-primary"
-        >github.com/tauri-apps/tauri</a
-      >
-    </li>
-    <li>
-      <span class="font-semibold">Community &amp; Support:</span>
-      <a
-        href="https://discord.gg/tauri"
-        target="_blank"
-        class="link link-primary"
-        >Discord</a
-      >
-    </li>
-  </ul>
-  <p>Design von Mattis Wittmaack und Celine Saman</p>
+<div class="card mt-6 bg-base-100 p-8 text-base-content">
+  <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+    <!-- Textbereich -->
+    <div>
+      <p class="mb-6 text-center text-2xl font-semibold md:text-left">
+        Vielen Dank für eure Aufmerksamkeit!
+      </p>
+      <p class="mb-4 text-center text-lg md:text-left">Habt ihr noch Fragen?</p>
+      <ul class="mb-6 list-inside list-disc space-y-2 pl-4">
+        <li>
+          <span class="font-semibold">Dokumentation:</span>
+          <a
+            href="https://tauri.app/"
+            target="_blank"
+            class="link link-primary"
+          >
+            tauri.app
+          </a>
+        </li>
+        <li>
+          <span class="font-semibold">GitHub:</span>
+          <a
+            href="https://github.com/tauri-apps/tauri"
+            target="_blank"
+            class="link link-primary"
+          >
+            github.com/tauri-apps/tauri
+          </a>
+        </li>
+        <li>
+          <span class="font-semibold">Community &amp; Support:</span>
+          <a
+            href="https://discord.gg/tauri"
+            target="_blank"
+            class="link link-primary"
+          >
+            Discord
+          </a>
+        </li>
+      </ul>
+      <p class="text-center text-sm md:text-left">
+        Design von Mattis Wittmaack und Celine Saman
+      </p>
+    </div>
+
+    <!-- QR-Codes -->
+    <div class="flex flex-col items-center space-y-8">
+      <!-- Dokumentation QR-Code -->
+      <div class="flex flex-col items-center">
+        <p class="mb-2 font-medium">QR-Code zur Dokumentation</p>
+        <img
+          src="src/assets/documentation_qr_code.svg"
+          alt="QR-Code Tauri Dokumentation"
+          class="h-36 w-36"
+        />
+      </div>
+
+      <!-- GitHub-Repo QR-Code -->
+      <div class="flex flex-col items-center">
+        <p class="mb-2 font-medium">QR-Code zum GitHub-Repo</p>
+        <img
+          src="src/assets/repo_qr_code.svg"
+          alt="QR-Code Tauri Dokumentation"
+          class="h-36 w-36"
+        />
+      </div>
+    </div>
+  </div>
 </div>
