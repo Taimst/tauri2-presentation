@@ -1,0 +1,47 @@
+<!-- Slide: Wie funktioniert Tauri? -->
+<h2 class="card-title text-center text-3xl">Wie funktioniert Tauri?</h2>
+<div class="card mt-6 bg-base-100 p-6 text-base-content">
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <!-- API & Fähigkeiten -->
+    <div>
+      <h3 class="mb-2 text-xl font-semibold">API &amp; Fähigkeiten</h3>
+      <ul class="list-disc space-y-1 pl-5">
+        <li>Zugriff auf das Rust-Backend über die Tauri-APIs</li>
+        <li>Fenster-Manipulation (Größe, Position, Always-on-Top, …)</li>
+        <li>Native Dialoge nutzen (Datei-Öffnen, Speichern, Alerts)</li>
+        <li>Weitere System-APIs: Notifications, Clipboard, Menüs, u.v.m.</li>
+      </ul>
+    </div>
+    <!-- Projektstruktur -->
+    <div>
+      <h3 class="mb-2 text-xl font-semibold">Projektstruktur</h3>
+      <ul class="list-disc space-y-1 pl-5">
+        <li>
+          <code
+            class="rounded bg-gray-200 px-1 py-0.5 text-slate-900 dark:bg-slate-700 dark:text-gray-100"
+            >src/</code
+          >
+          – Frontend (HTML, CSS, JS/TS &amp; Framework)
+        </li>
+        <li>
+          <code
+            class="rounded bg-gray-200 px-1 py-0.5 text-slate-900 dark:bg-slate-700 dark:text-gray-100"
+            >src-tauri/</code
+          >
+          – Rust-Backend und Tauri-Konfiguration
+        </li>
+        <li>
+          Grundlegend ein einfaches JavaScript-Projekt mit Tauri-CLI-Integration
+        </li>
+        <li>
+          Build-Prozess: Frontend →
+          <code
+            class="rounded bg-gray-200 px-1 py-0.5 text-slate-900 dark:bg-slate-700 dark:text-gray-100"
+            >dist/</code
+          >
+          → Rust-Binary bündelt alles
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,20 @@ export const slidesData: SlideData[] = [
     title: "Einführung",
   },
   {
+    id: "was-ist-tauri",
+    url: `${baseDirSlides}/was-ist-tauri.html`,
+    title: "Was ist Tauri",
+  },
+  {
+    id: "wie-funktioniert-tauri",
+    url: `${baseDirSlides}/wie-funktioniert-tauri.html`,
+    title: "Wie funktioniert Tauri",
+  },
+  {
+    id: "electron-exkurs",
+    url: `${baseDirSlides}/electron-exkurs.html`,
+  },
+  {
     id: "electron-comparison",
     url: `${baseDirSlides}/electron-comparison.html`,
     title: "Vergleich mit Electron",
