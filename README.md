@@ -5,7 +5,8 @@ Beispielprojekt als Präsentaion mit Slides zur Einführung in "Was ist Tauri" u
 ## Setup
 
 - Code Editor z.B. [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
-- [Bun](https://bun.sh/) zur Installation und Ausführung vom JS
+- Installiere [Rust](https://www.rust-lang.org/tools/install) zur Installation und Ausführung von Rust
+- Installiere [Bun](https://bun.sh/) zur Installation und Ausführung vom JS
 
 ## Projekt ausführen
 
